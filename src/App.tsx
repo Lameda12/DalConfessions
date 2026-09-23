@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import { ComposeProvider } from '@/context/ComposeContext'
 import { AppLayout } from '@/components/layout/AppLayout'
 import { FeedPage } from '@/pages/FeedPage'
@@ -32,6 +33,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </ComposeProvider>
+      <Analytics />
     </QueryClientProvider>
   )
 }
