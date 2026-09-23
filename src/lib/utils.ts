@@ -4,6 +4,26 @@ export function cn(...inputs: ClassValue[]) {
   return clsx(inputs)
 }
 
+/** Every confession evaporates this many hours after it's posted. */
+export const EVAPORATION_HOURS = 6
+
+export function getExpiryDate(createdAtIso: string): Date {
+  return new Date(new Date(createdAtIso).getTime() + EVAPORATION_HOURS * 60 * 60 * 1000)
+}
+
+export function formatTimeRemaining(createdAtIso: string): { text: string; urgent: boolean; gone: boolean } {
+  const remainingMs = getExpiryDate(createdAtIso).getTime() - Date.now()
+
+  if (remainingMs <= 0) return { text: 'gone', urgent: true, gone: true }
+
+  const totalMin = Math.max(1, Math.ceil(remainingMs / 60_000))
+  const hours = Math.floor(totalMin / 60)
+  const minutes = totalMin % 60
+  const text = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`
+
+  return { text, urgent: remainingMs < 60 * 60 * 1000, gone: false }
+}
+
 export function formatRelativeTime(iso: string): string {
   const date = new Date(iso)
   const diffMs = Date.now() - date.getTime()

@@ -11,5 +11,6 @@ export function usePost(postId: string | undefined) {
       return data as Post
     },
     enabled: Boolean(postId),
+    refetchInterval: 60_000,
   })
 }

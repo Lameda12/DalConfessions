@@ -45,6 +45,9 @@ export function StandardsPopup() {
           <li className="flex gap-2">
             <span>🚩</span> One tap reports anything that crosses the line.
           </li>
+          <li className="flex gap-2">
+            <span>⏳</span> Every confession vanishes 6 hours after it's posted. Once said, once forgotten.
+          </li>
         </ul>
         <button
           type="button"

@@ -19,8 +19,8 @@ export function FeedPage() {
   usePageMeta(
     categoryMeta ? `${categoryMeta.label} — DalConfessions` : 'DalConfessions — Anonymous Dal Community',
     categoryMeta
-      ? `Anonymous ${categoryMeta.label} confessions from Dalhousie students.`
-      : 'Browse trending, latest, and top anonymous confessions from Dalhousie students.',
+      ? `Anonymous ${categoryMeta.label} confessions from Dalhousie students, gone 6 hours after they're posted.`
+      : 'Anonymous confessions from Dalhousie students. Every post vanishes 6 hours after it goes up.',
   )
 
   const { data: posts, isLoading, isError } = usePosts({ tab, category })

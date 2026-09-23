@@ -7,6 +7,7 @@ import { VoteControl } from './VoteControl'
 import { ReactionBar } from './ReactionBar'
 import { BlurOverlay } from './BlurOverlay'
 import { ShareMenu } from './ShareMenu'
+import { EvaporationTimer } from './EvaporationTimer'
 import { ReportModal } from '@/components/common/ReportModal'
 import type { Post } from '@/types'
 
@@ -44,13 +45,12 @@ export function PostCard({ post, commentCount, detail = false }: PostCardProps) 
         !detail && 'cursor-pointer hover:border-dal-gold/60',
       )}
     >
-      <div className="mb-2.5 flex items-center justify-between">
+      <div className="mb-1.5 flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs">
           <span className="flex items-center gap-1 rounded-full bg-charcoal/5 px-2.5 py-1 font-semibold text-charcoal">
             {category.emoji} {category.label}
           </span>
           {post.tag && <span className="text-slate-light">#{post.tag}</span>}
-          <span className="text-slate-light">· {formatRelativeTime(post.created_at)}</span>
         </div>
 
         <div className="relative">
@@ -90,6 +90,11 @@ export function PostCard({ post, commentCount, detail = false }: PostCardProps) 
             </>
           )}
         </div>
+      </div>
+
+      <div className="mb-2.5 flex items-center justify-between text-xs text-slate-light">
+        <span>{formatRelativeTime(post.created_at)}</span>
+        <EvaporationTimer createdAt={post.created_at} />
       </div>
 
       {post.spoiler ? (

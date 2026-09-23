@@ -2,6 +2,8 @@
 
 Anonymous confessions and community app for Dalhousie students. No sign-up, no email — anyone can browse, post, react, and comment anonymously.
 
+**Every confession vanishes 6 hours after it's posted — comments, votes, and all.** Once said, once forgotten. That's the whole hook.
+
 Built with React + TypeScript + Vite + Tailwind CSS v4, backed by Supabase (Postgres + RLS).
 
 ## Stack
@@ -22,7 +24,11 @@ npm run dev
 
 1. Create a project at [supabase.com](https://supabase.com).
 2. In the SQL Editor, run `supabase/migrations/0001_init.sql`. This creates the `posts`, `comments`, `reactions`, `comment_reactions`, and `reports` tables, the RLS policies, the vote/report RPC functions, the `posts_feed` trending view, and seeds a batch of sample confessions.
-3. Copy your project's **Project URL** and **anon public key** from Settings → API.
+3. Enable the **pg_cron** extension: Database → Extensions → search "pg_cron" → Enable.
+4. In the SQL Editor, run `supabase/migrations/0002_evaporation.sql`. This adds the 6-hour evaporation window to `posts_feed` (so expired posts vanish from every read path instantly) and schedules a cron job that hard-deletes posts older than 6 hours every 5 minutes — comments, reactions, and reports cascade-delete with them.
+5. Copy your project's **Project URL** and **anon public key** from Settings → API.
+
+If pg_cron isn't available on your plan, run everything in `0002_evaporation.sql` except the last two statements (`create extension pg_cron` and `cron.schedule(...)`). The app still *looks* right — the `posts_feed` view filters out anything older than 6 hours from every read path, so expired posts vanish from the UI regardless. Without the cron job, though, the rows just sit in the `posts` table forever instead of actually being deleted — "forgotten" becomes "hidden," not gone.
 
 ## Deploying to Vercel
 
@@ -50,6 +56,7 @@ supabase/
 
 ## Notes on the current build
 
+- **Evaporation**: every confession (and its comments/reactions/reports) is gone 6 hours after posting. This is the product's core hook, not a moderation feature — see `supabase/migrations/0002_evaporation.sql`. Because of it, the feed only has Trending and Latest tabs; anything like "Top of Week" or "Campus Classics" doesn't make sense when nothing survives past 6 hours.
 - No accounts, notifications, or DMs — fully anonymous by device token stored in `localStorage`.
 - Posts/comments with 3+ reports auto-blur behind a warning; there's no moderation review dashboard yet (reports are stored, ready for a future admin view).
 - Vote/reaction/report counters are only ever mutated through `SECURITY DEFINER` Postgres functions, so an anonymous client can't set counts directly.

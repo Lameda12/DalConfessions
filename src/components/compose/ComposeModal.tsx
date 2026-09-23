@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { TriangleAlert, EyeOff } from 'lucide-react'
+import { TriangleAlert, EyeOff, Hourglass } from 'lucide-react'
 import { Sheet } from '@/components/common/Sheet'
 import { useCompose } from '@/context/ComposeContext'
 import { useCreatePost } from '@/hooks/useCreatePost'
@@ -57,6 +57,10 @@ export function ComposeModal() {
 
   return (
     <Sheet title="Whisper something to Dal" onClose={handleClose} maxWidth="max-w-lg">
+      <p className="-mt-2 mb-3 flex items-center gap-1.5 text-xs font-medium text-slate-light">
+        <Hourglass size={12} className="text-dal-amber" />
+        Vanishes in 6 hours. Say it, then let it go.
+      </p>
       <textarea
         autoFocus
         value={content}

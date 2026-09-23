@@ -26,6 +26,7 @@ export interface Post {
   net_score?: number
   trending_score?: number
   reaction_counts?: Partial<Record<ReactionKind, number>>
+  expires_at?: string
 }
 
 export interface Comment {
@@ -41,4 +42,4 @@ export interface Comment {
   created_at: string
 }
 
-export type FeedTab = 'trending' | 'latest' | 'top-week' | 'classics'
+export type FeedTab = 'trending' | 'latest'

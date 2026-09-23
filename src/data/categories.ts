@@ -36,8 +36,6 @@ export const CAMPUS_REACTIONS: ReactionMeta[] = [
 export const FEED_TABS = [
   { id: 'trending', label: 'Trending' },
   { id: 'latest', label: 'Latest' },
-  { id: 'top-week', label: 'Top of Week' },
-  { id: 'classics', label: 'Campus Classics' },
 ] as const
 
 export const REPORT_REASONS = [
