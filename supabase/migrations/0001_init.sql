@@ -409,9 +409,9 @@ insert into posts (content, tag, category, spoiler, upvotes, downvotes, created_
 -- Seed a few threaded comments on the first post.
 with p as (select id from posts order by created_at desc limit 1)
 insert into comments (post_id, parent_id, content, pseudonym, upvotes, created_at, client_token)
-select id, null, 'lmao I was RIGHT behind them, they almost took out a first year', 'Tiger #1', 12, now() - interval '90 minutes', 'seed-token-c1' from p
+select id, null::uuid, 'lmao I was RIGHT behind them, they almost took out a first year', 'Tiger #1', 12, now() - interval '90 minutes', 'seed-token-c1' from p
 union all
-select id, null, 'SLC presentations are genuinely the Dal hunger games', 'Seaside Anon', 8, now() - interval '80 minutes', 'seed-token-c2' from p;
+select id, null::uuid, 'SLC presentations are genuinely the Dal hunger games', 'Seaside Anon', 8, now() - interval '80 minutes', 'seed-token-c2' from p;
 
 with p as (select id from posts order by created_at desc limit 1),
      c as (select id from comments where pseudonym = 'Tiger #1' order by created_at desc limit 1)
