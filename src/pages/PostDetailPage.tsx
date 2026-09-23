@@ -17,14 +17,14 @@ export function PostDetailPage() {
 
   return (
     <div>
-      <Link to="/" className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate hover:text-charcoal">
+      <Link to="/" className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate hover:text-fg">
         <ArrowLeft size={16} /> Back to feed
       </Link>
 
-      {isLoading && <div className="h-40 animate-pulse rounded-2xl bg-hairline/60" />}
+      {isLoading && <div className="h-40 animate-pulse rounded-2xl bg-hairline/60 dark:bg-white/10" />}
 
       {isError && (
-        <p className="rounded-2xl border border-hairline bg-white p-6 text-center text-sm text-slate">
+        <p className="rounded-2xl border border-hairline bg-surface p-6 text-center text-sm text-slate">
           This confession couldn't be found. It may have been removed.
         </p>
       )}

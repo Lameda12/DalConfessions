@@ -16,7 +16,7 @@ export function TopicPill({ category, active, count }: TopicPillProps) {
         'flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold transition-colors',
         active
           ? 'border-dal-gold bg-dal-gold text-charcoal'
-          : 'border-hairline bg-white text-slate hover:border-dal-gold/60 hover:text-charcoal',
+          : 'border-hairline bg-surface text-slate hover:border-dal-gold/60 hover:text-fg',
       )}
     >
       <span>{category.emoji}</span>

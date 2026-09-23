@@ -35,19 +35,19 @@ export function PostCard({ post, commentCount, detail = false }: PostCardProps) 
     fn()
   }
 
-  const content = <p className="whitespace-pre-wrap text-[15px] leading-relaxed text-charcoal">{post.content}</p>
+  const content = <p className="whitespace-pre-wrap text-[15px] leading-relaxed text-fg">{post.content}</p>
 
   return (
     <article
       onClick={goToPost}
       className={cn(
-        'rounded-2xl border border-hairline bg-white p-4 transition-colors',
+        'rounded-2xl border border-hairline bg-surface p-4 transition-colors',
         !detail && 'cursor-pointer hover:border-dal-gold/60',
       )}
     >
       <div className="mb-1.5 flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs">
-          <span className="flex items-center gap-1 rounded-full bg-charcoal/5 px-2.5 py-1 font-semibold text-charcoal">
+          <span className="flex items-center gap-1 rounded-full bg-tint px-2.5 py-1 font-semibold text-fg">
             {category.emoji} {category.label}
           </span>
           {post.tag && <span className="text-slate-light">#{post.tag}</span>}
@@ -58,21 +58,21 @@ export function PostCard({ post, commentCount, detail = false }: PostCardProps) 
             type="button"
             onClick={stop(() => setMenuOpen((v) => !v))}
             aria-label="More options"
-            className="flex h-7 w-7 items-center justify-center rounded-full text-slate-light transition-colors hover:bg-charcoal/5"
+            className="flex h-7 w-7 items-center justify-center rounded-full text-slate-light transition-colors hover:bg-tint"
           >
             <MoreHorizontal size={18} />
           </button>
           {menuOpen && (
             <>
               <div className="fixed inset-0 z-10" onClick={stop(() => setMenuOpen(false))} />
-              <div className="absolute right-0 top-9 z-20 w-44 overflow-hidden rounded-xl border border-hairline bg-white py-1 shadow-lg">
+              <div className="absolute right-0 top-9 z-20 w-44 overflow-hidden rounded-xl border border-hairline bg-surface py-1 shadow-lg">
                 <button
                   type="button"
                   onClick={stop(() => {
                     setMenuOpen(false)
                     setShareOpen(true)
                   })}
-                  className="flex w-full items-center gap-2 px-3.5 py-2.5 text-left text-sm font-medium text-charcoal hover:bg-charcoal/5"
+                  className="flex w-full items-center gap-2 px-3.5 py-2.5 text-left text-sm font-medium text-fg hover:bg-tint"
                 >
                   <Share2 size={15} /> Share
                 </button>
@@ -82,7 +82,7 @@ export function PostCard({ post, commentCount, detail = false }: PostCardProps) 
                     setMenuOpen(false)
                     setReportOpen(true)
                   })}
-                  className="flex w-full items-center gap-2 px-3.5 py-2.5 text-left text-sm font-medium text-red-500 hover:bg-red-50"
+                  className="flex w-full items-center gap-2 px-3.5 py-2.5 text-left text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10"
                 >
                   <Flag size={15} /> Report
                 </button>

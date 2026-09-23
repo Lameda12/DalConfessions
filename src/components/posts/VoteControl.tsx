@@ -36,19 +36,19 @@ export function VoteControl({ post, orientation = 'horizontal' }: VoteControlPro
         aria-label="Upvote"
         className={cn(
           'flex h-7 w-7 items-center justify-center rounded-full transition-colors',
-          upvoted ? 'bg-dal-gold text-charcoal' : 'text-slate hover:bg-charcoal/5',
+          upvoted ? 'bg-dal-gold text-charcoal' : 'text-slate hover:bg-tint',
         )}
       >
         <ChevronUp size={18} className={upvoted ? 'animate-pop' : undefined} />
       </button>
-      <span className="min-w-[1.75rem] text-center text-sm font-bold tabular-nums text-charcoal">{net}</span>
+      <span className="min-w-[1.75rem] text-center text-sm font-bold tabular-nums text-fg">{net}</span>
       <button
         type="button"
         onClick={vote('downvote')}
         aria-label="Downvote"
         className={cn(
           'flex h-7 w-7 items-center justify-center rounded-full transition-colors',
-          downvoted ? 'bg-slate text-off-white' : 'text-slate hover:bg-charcoal/5',
+          downvoted ? 'bg-slate text-off-white' : 'text-slate hover:bg-tint',
         )}
       >
         <ChevronDown size={18} className={downvoted ? 'animate-pop' : undefined} />

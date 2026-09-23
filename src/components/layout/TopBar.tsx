@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { PenLine } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useCompose } from '@/context/ComposeContext'
+import { ThemeToggle } from '@/components/layout/ThemeToggle'
 
 const DESKTOP_NAV = [
   { to: '/', label: 'Feed', end: true },
@@ -19,9 +20,7 @@ export function TopBar() {
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-charcoal font-display text-base font-extrabold text-dal-gold">
             D
           </span>
-          <span className="font-display text-lg font-extrabold tracking-tight text-charcoal">
-            DalConfessions
-          </span>
+          <span className="font-display text-lg font-extrabold tracking-tight text-fg">DalConfessions</span>
         </NavLink>
 
         <nav className="hidden items-center gap-1 md:flex">
@@ -33,7 +32,7 @@ export function TopBar() {
               className={({ isActive }) =>
                 cn(
                   'rounded-full px-4 py-2 text-sm font-semibold transition-colors',
-                  isActive ? 'bg-charcoal text-dal-gold' : 'text-slate hover:bg-charcoal/5 hover:text-charcoal',
+                  isActive ? 'bg-charcoal text-dal-gold' : 'text-slate hover:bg-tint hover:text-fg',
                 )
               }
             >
@@ -42,14 +41,17 @@ export function TopBar() {
           ))}
         </nav>
 
-        <button
-          type="button"
-          onClick={() => openCompose()}
-          className="hidden items-center gap-2 rounded-full bg-dal-gold px-4 py-2 text-sm font-bold text-charcoal shadow-sm transition-transform hover:brightness-95 active:scale-[0.97] md:flex"
-        >
-          <PenLine size={16} />
-          Whisper something
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => openCompose()}
+            className="hidden items-center gap-2 rounded-full bg-dal-gold px-4 py-2 text-sm font-bold text-charcoal shadow-sm transition-transform hover:brightness-95 active:scale-[0.97] md:flex"
+          >
+            <PenLine size={16} />
+            Whisper something
+          </button>
+        </div>
       </div>
     </header>
   )

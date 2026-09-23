@@ -4,7 +4,16 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#1C1C1E" />
+    <meta name="theme-color" content="#FAF8F4" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('dalconfessions:theme');
+          var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
     <title>DalConfessions — Anonymous Dal Community</title>
     <meta
       name="description"

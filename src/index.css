@@ -1,17 +1,38 @@
 @import "tailwindcss";
 
+/* Manual toggle via .dark on <html>, defaulting to system preference
+   (applied synchronously in index.html before paint to avoid a flash). */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
 
+  /* Dal brand accent — constant across both themes, it's what makes the
+     app read as DalConfessions whether the page is light or dark. */
   --color-dal-gold: #f8ba15;
   --color-dal-amber: #d99b00;
+
+  /* Ink — a fixed near-black used for solid chips/buttons and for text
+     sitting on top of the (always-light) gold accent. Stays constant. */
   --color-charcoal: #1c1c1e;
-  --color-charcoal-soft: #2a2a2d;
+
+  /* Everything below flips between light and dark via the .dark overrides
+     further down, so every utility using these tokens (text-fg, bg-surface,
+     border-hairline, etc.) re-themes automatically with no per-component
+     dark: classes needed. */
+  --color-fg: #1c1c1e;
   --color-slate: #5b5e66;
   --color-slate-light: #8a8d95;
   --color-off-white: #faf8f4;
   --color-hairline: #ece7dc;
+  --color-surface: #ffffff;
+  --color-tint: rgba(28, 28, 30, 0.05);
+
+  /* Label color for text sitting on the (always-dark) ink chips/scrims —
+     constant across themes, unlike --color-off-white which flips to
+     near-black in dark mode and would go invisible on those surfaces. */
+  --color-ink-fg: #faf8f4;
 
   --animate-pop: pop 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
   --animate-rise: rise 240ms ease-out;
@@ -40,15 +61,37 @@
   }
 }
 
+.dark {
+  --color-fg: #f4f2ec;
+  --color-slate: #a3a5ac;
+  --color-slate-light: #7d8087;
+  --color-off-white: #131316;
+  --color-hairline: rgba(255, 255, 255, 0.1);
+  --color-surface: #1c1c20;
+  --color-tint: rgba(255, 255, 255, 0.07);
+
+  /* Lighter than --color-surface so ink chips/buttons (bg-charcoal) stay
+     visibly elevated instead of blending into a dark card behind them —
+     it's what --color-charcoal at #1c1c1e already does against the page
+     background, just re-tuned for when the ink sits on a surface instead. */
+  --color-charcoal: #313136;
+}
+
 html {
   -webkit-tap-highlight-color: transparent;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
   background-color: var(--color-off-white);
-  color: var(--color-charcoal);
+  color: var(--color-fg);
   font-family: var(--font-sans);
   overscroll-behavior-y: none;
+  transition: background-color 150ms ease, color 150ms ease;
 }
 
 ::selection {

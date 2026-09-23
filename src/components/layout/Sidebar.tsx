@@ -15,17 +15,17 @@ export function Sidebar() {
 
   return (
     <aside className="sticky top-[73px] hidden h-fit w-[320px] shrink-0 flex-col gap-4 lg:flex">
-      <div className="rounded-2xl border border-hairline bg-white p-5">
+      <div className="rounded-2xl border border-hairline bg-surface p-5">
         <div className="mb-3 flex items-center gap-2">
           <Flame size={18} className="text-dal-amber" />
-          <h2 className="font-display text-sm font-bold text-charcoal">Trending right now</h2>
+          <h2 className="font-display text-sm font-bold text-fg">Trending right now</h2>
         </div>
         <ul className="flex flex-col gap-3">
           {trending?.map((post) => (
             <li key={post.id}>
               <Link
                 to={`/post/${post.id}`}
-                className="block text-sm leading-snug text-slate transition-colors hover:text-charcoal"
+                className="block text-sm leading-snug text-slate transition-colors hover:text-fg"
               >
                 <span className="mr-1.5">{CATEGORY_BY_SLUG[post.category as keyof typeof CATEGORY_BY_SLUG]?.emoji}</span>
                 {post.content.length > 90 ? `${post.content.slice(0, 90)}…` : post.content}
@@ -36,10 +36,10 @@ export function Sidebar() {
         </ul>
       </div>
 
-      <div className="rounded-2xl border border-hairline bg-white p-5">
+      <div className="rounded-2xl border border-hairline bg-surface p-5">
         <div className="mb-3 flex items-center gap-2">
           <ShieldCheck size={18} className="text-dal-amber" />
-          <h2 className="font-display text-sm font-bold text-charcoal">Campus rules</h2>
+          <h2 className="font-display text-sm font-bold text-fg">Campus rules</h2>
         </div>
         <ul className="flex flex-col gap-2.5">
           {RULES.map((rule) => (

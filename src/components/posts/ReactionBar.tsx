@@ -28,7 +28,7 @@ export function ReactionBar({ post }: { post: Post }) {
               'flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-semibold transition-colors',
               active
                 ? 'border-dal-amber bg-dal-gold/20 text-dal-amber'
-                : 'border-hairline bg-white text-slate hover:border-dal-gold/50',
+                : 'border-hairline bg-surface text-slate hover:border-dal-gold/50',
             )}
           >
             <span className={active ? 'animate-pop' : undefined}>{emoji}</span>
