@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import { ComposeProvider } from '@/context/ComposeContext'
 import { ThemeProvider } from '@/context/ThemeContext'
 import { AppLayout } from '@/components/layout/AppLayout'
@@ -20,21 +21,20 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <ComposeProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route element={<AppLayout />}>
-                <Route path="/" element={<FeedPage />} />
-                <Route path="/categories" element={<CategoriesPage />} />
-                <Route path="/categories/:slug" element={<FeedPage />} />
-                <Route path="/search" element={<SearchPage />} />
-                <Route path="/post/:id" element={<PostDetailPage />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </ComposeProvider>
-      </ThemeProvider>
+      <ComposeProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<AppLayout />}>
+              <Route path="/" element={<FeedPage />} />
+              <Route path="/categories" element={<CategoriesPage />} />
+              <Route path="/categories/:slug" element={<FeedPage />} />
+              <Route path="/search" element={<SearchPage />} />
+              <Route path="/post/:id" element={<PostDetailPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </ComposeProvider>
+      <Analytics />
     </QueryClientProvider>
   )
 }
