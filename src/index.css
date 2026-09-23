@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-dal-gold: #f8ba15;
+  --color-dal-amber: #d99b00;
+  --color-charcoal: #1c1c1e;
+  --color-charcoal-soft: #2a2a2d;
+  --color-slate: #5b5e66;
+  --color-slate-light: #8a8d95;
+  --color-off-white: #faf8f4;
+  --color-hairline: #ece7dc;
+
+  --animate-pop: pop 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  --animate-rise: rise 240ms ease-out;
+
+  @keyframes pop {
+    0% {
+      transform: scale(1);
+    }
+    45% {
+      transform: scale(1.35);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--color-off-white);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  overscroll-behavior-y: none;
+}
+
+::selection {
+  background-color: var(--color-dal-gold);
+  color: var(--color-charcoal);
+}
+
+/* Thin, unobtrusive scrollbars for the desktop sidebar/topic rail */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--color-hairline);
+  border-radius: 999px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
