@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import { ComposeProvider } from '@/context/ComposeContext'
 import { ThemeProvider } from '@/context/ThemeContext'
 import { AppLayout } from '@/components/layout/AppLayout'
@@ -35,6 +36,7 @@ function App() {
           </BrowserRouter>
         </ComposeProvider>
       </ThemeProvider>
+      <Analytics />
     </QueryClientProvider>
   )
 }
