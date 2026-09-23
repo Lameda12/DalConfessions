@@ -38,7 +38,7 @@ export function CommentComposer({ post, parentId, placeholder, autoFocus, onDone
         onChange={(e) => setContent(e.target.value.slice(0, 500))}
         placeholder={placeholder ?? 'Add a comment...'}
         rows={2}
-        className="w-full resize-none rounded-xl border border-hairline bg-off-white px-3.5 py-2.5 text-sm leading-relaxed text-charcoal outline-none placeholder:text-slate-light focus:border-dal-gold"
+        className="w-full resize-none rounded-xl border border-hairline bg-off-white px-3.5 py-2.5 text-sm leading-relaxed text-fg outline-none placeholder:text-slate-light focus:border-dal-gold"
       />
       <div className="flex items-center justify-between">
         {error ? <span className="text-xs font-medium text-red-500">{error}</span> : <span />}
@@ -52,7 +52,7 @@ export function CommentComposer({ post, parentId, placeholder, autoFocus, onDone
             type="button"
             disabled={!content.trim() || createComment.isPending}
             onClick={submit}
-            className="rounded-full bg-charcoal px-4 py-1.5 text-xs font-bold text-off-white disabled:opacity-40"
+            className="rounded-full bg-charcoal px-4 py-1.5 text-xs font-bold text-ink-fg disabled:opacity-40"
           >
             {createComment.isPending ? 'Posting…' : 'Reply'}
           </button>

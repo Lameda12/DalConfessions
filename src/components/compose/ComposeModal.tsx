@@ -67,7 +67,7 @@ export function ComposeModal() {
         onChange={(e) => setContent(e.target.value)}
         placeholder="What's on your mind? Nobody will know it's you..."
         rows={5}
-        className="w-full resize-none rounded-2xl border border-hairline bg-off-white p-4 text-[15px] leading-relaxed text-charcoal outline-none placeholder:text-slate-light focus:border-dal-gold"
+        className="w-full resize-none rounded-2xl border border-hairline bg-off-white p-4 text-[15px] leading-relaxed text-fg outline-none placeholder:text-slate-light focus:border-dal-gold"
       />
 
       <div className="mt-1 flex items-center justify-between">
@@ -113,7 +113,7 @@ export function ComposeModal() {
           value={tag}
           onChange={(e) => setTag(e.target.value.slice(0, 30))}
           placeholder="e.g. Killam, Coburg, Sexton"
-          className="w-full rounded-xl border border-hairline bg-off-white px-3.5 py-2.5 text-sm text-charcoal outline-none placeholder:text-slate-light focus:border-dal-gold"
+          className="w-full rounded-xl border border-hairline bg-off-white px-3.5 py-2.5 text-sm text-fg outline-none placeholder:text-slate-light focus:border-dal-gold"
         />
       </div>
 
@@ -148,7 +148,7 @@ export function ComposeModal() {
         type="button"
         disabled={!canSubmit}
         onClick={handleSubmit}
-        className="mt-5 w-full rounded-full bg-charcoal py-3.5 text-sm font-bold text-off-white transition-transform active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40"
+        className="mt-5 w-full rounded-full bg-charcoal py-3.5 text-sm font-bold text-ink-fg transition-transform active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40"
       >
         {createPost.isPending ? 'Posting…' : 'Post anonymously'}
       </button>

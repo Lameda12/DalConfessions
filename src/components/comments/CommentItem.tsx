@@ -28,13 +28,13 @@ export function CommentItem({ comment, post, depth = 0 }: CommentItemProps) {
   const isReported = comment.report_count >= 3
   const isOP = comment.pseudonym === 'OP'
 
-  const body = <p className="whitespace-pre-wrap text-sm leading-relaxed text-charcoal">{comment.content}</p>
+  const body = <p className="whitespace-pre-wrap text-sm leading-relaxed text-fg">{comment.content}</p>
 
   return (
     <div className={cn(depth > 0 && 'ml-4 border-l-2 border-hairline pl-3.5 sm:ml-6')}>
       <div className="py-2.5">
         <div className="mb-1 flex items-center gap-2 text-xs">
-          <span className={cn('font-bold', isOP ? 'text-dal-amber' : 'text-charcoal')}>{comment.pseudonym}</span>
+          <span className={cn('font-bold', isOP ? 'text-dal-amber' : 'text-fg')}>{comment.pseudonym}</span>
           <span className="text-slate-light">· {formatRelativeTime(comment.created_at)}</span>
         </div>
 
@@ -46,7 +46,7 @@ export function CommentItem({ comment, post, depth = 0 }: CommentItemProps) {
             onClick={() => toggleUpvote.mutate({ commentId: comment.id, postId: post.id })}
             className={cn(
               'flex items-center gap-1 text-xs font-semibold transition-colors',
-              upvoted ? 'text-dal-amber' : 'text-slate-light hover:text-charcoal',
+              upvoted ? 'text-dal-amber' : 'text-slate-light hover:text-fg',
             )}
           >
             <ChevronUp size={15} className={upvoted ? 'animate-pop' : undefined} />
@@ -55,7 +55,7 @@ export function CommentItem({ comment, post, depth = 0 }: CommentItemProps) {
           <button
             type="button"
             onClick={() => setReplying((v) => !v)}
-            className="flex items-center gap-1 text-xs font-semibold text-slate-light hover:text-charcoal"
+            className="flex items-center gap-1 text-xs font-semibold text-slate-light hover:text-fg"
           >
             <Reply size={14} /> Reply
           </button>

@@ -8,7 +8,7 @@ Built with React + TypeScript + Vite + Tailwind CSS v4, backed by Supabase (Post
 
 ## Stack
 
-- **Frontend**: React 19, React Router, TanStack Query, Tailwind CSS v4
+- **Frontend**: React 19, React Router, TanStack Query, Tailwind CSS v4 (responsive light/dark theming, Dal gold/amber accent constant in both)
 - **Backend**: Supabase (Postgres, Row Level Security, SECURITY DEFINER RPC functions for votes/reactions/reports)
 - **Hosting**: Vercel (static SPA build)
 
@@ -44,7 +44,7 @@ If pg_cron isn't available on your plan, run everything in `0002_evaporation.sql
 ```
 src/
   components/    UI components (layout, posts, compose, comments, common)
-  context/       ComposeContext (global "whisper" modal state)
+  context/       ComposeContext (global "whisper" modal state), ThemeContext (light/dark)
   data/          Static category + reaction metadata
   hooks/         TanStack Query hooks wrapping Supabase reads/writes
   lib/           Supabase client, device token, moderation checks, share-card renderer
@@ -56,6 +56,7 @@ supabase/
 
 ## Notes on the current build
 
+- **Dark mode**: a toggle in the top bar (sun/moon icon) switches themes, defaults to the OS preference, and persists the choice in `localStorage`. Colors are semantic CSS custom properties in `src/index.css` (`--color-fg`, `--color-surface`, `--color-hairline`, `--color-tint`, etc.) that flip under a `.dark` class on `<html>`, applied synchronously via an inline script in `index.html` before paint (no flash of the wrong theme). The Dal gold/amber accent and the `--color-charcoal` ink tone (chips, primary buttons) stay visually constant across both themes — only `--color-charcoal`'s exact value shifts slightly in dark mode so ink chips stay visible against dark card surfaces instead of blending in.
 - **Evaporation**: every confession (and its comments/reactions/reports) is gone 6 hours after posting. This is the product's core hook, not a moderation feature — see `supabase/migrations/0002_evaporation.sql`. Because of it, the feed only has Trending and Latest tabs; anything like "Top of Week" or "Campus Classics" doesn't make sense when nothing survives past 6 hours.
 - No accounts, notifications, or DMs — fully anonymous by device token stored in `localStorage`.
 - Posts/comments with 3+ reports auto-blur behind a warning; there's no moderation review dashboard yet (reports are stored, ready for a future admin view).

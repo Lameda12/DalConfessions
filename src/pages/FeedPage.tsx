@@ -29,10 +29,10 @@ export function FeedPage() {
     <div>
       {categoryMeta ? (
         <div className="mb-4 flex items-center gap-2">
-          <Link to="/categories" className="text-slate-light hover:text-charcoal">
+          <Link to="/categories" className="text-slate-light hover:text-fg">
             <ArrowLeft size={18} />
           </Link>
-          <h1 className="font-display text-xl font-extrabold text-charcoal">
+          <h1 className="font-display text-xl font-extrabold text-fg">
             {categoryMeta.emoji} {categoryMeta.label}
           </h1>
         </div>
@@ -42,7 +42,7 @@ export function FeedPage() {
         </div>
       )}
 
-      <div className="mb-4 flex gap-1 overflow-x-auto rounded-full border border-hairline bg-white p-1">
+      <div className="mb-4 flex gap-1 overflow-x-auto rounded-full border border-hairline bg-surface p-1">
         {FEED_TABS.map((t) => (
           <button
             key={t.id}
@@ -50,7 +50,7 @@ export function FeedPage() {
             onClick={() => setTab(t.id)}
             className={cn(
               'flex-1 whitespace-nowrap rounded-full px-3 py-2 text-xs font-bold transition-colors sm:text-sm',
-              tab === t.id ? 'bg-charcoal text-dal-gold' : 'text-slate hover:text-charcoal',
+              tab === t.id ? 'bg-charcoal text-dal-gold' : 'text-slate hover:text-fg',
             )}
           >
             {t.label}
@@ -61,13 +61,13 @@ export function FeedPage() {
       {isLoading && (
         <div className="flex flex-col gap-3">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="h-32 animate-pulse rounded-2xl bg-hairline/60" />
+            <div key={i} className="h-32 animate-pulse rounded-2xl bg-hairline/60 dark:bg-white/10" />
           ))}
         </div>
       )}
 
       {isError && (
-        <p className="rounded-2xl border border-hairline bg-white p-6 text-center text-sm text-slate">
+        <p className="rounded-2xl border border-hairline bg-surface p-6 text-center text-sm text-slate">
           Couldn't load the feed. Check your Supabase connection and try again.
         </p>
       )}

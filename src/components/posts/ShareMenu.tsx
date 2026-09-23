@@ -41,7 +41,7 @@ export function ShareMenu({ post, onClose }: { post: Post; onClose: () => void }
         <button
           type="button"
           onClick={copyLink}
-          className="flex items-center gap-3 rounded-xl border border-hairline px-4 py-3.5 text-left text-sm font-semibold text-charcoal transition-colors hover:border-dal-amber hover:bg-dal-gold/10"
+          className="flex items-center gap-3 rounded-xl border border-hairline px-4 py-3.5 text-left text-sm font-semibold text-fg transition-colors hover:border-dal-amber hover:bg-dal-gold/10"
         >
           {copied ? <Check size={18} className="text-dal-amber" /> : <Link2 size={18} className="text-slate" />}
           {copied ? 'Link copied!' : 'Copy clean link'}
@@ -50,7 +50,7 @@ export function ShareMenu({ post, onClose }: { post: Post; onClose: () => void }
           type="button"
           onClick={downloadCard}
           disabled={rendering}
-          className="flex items-center gap-3 rounded-xl border border-hairline px-4 py-3.5 text-left text-sm font-semibold text-charcoal transition-colors hover:border-dal-amber hover:bg-dal-gold/10 disabled:opacity-60"
+          className="flex items-center gap-3 rounded-xl border border-hairline px-4 py-3.5 text-left text-sm font-semibold text-fg transition-colors hover:border-dal-amber hover:bg-dal-gold/10 disabled:opacity-60"
         >
           <ImageDown size={18} className="text-slate" />
           {rendering ? 'Rendering image…' : 'Download image card (Stories / WhatsApp)'}

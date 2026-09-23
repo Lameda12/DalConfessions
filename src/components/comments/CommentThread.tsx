@@ -32,11 +32,11 @@ export function CommentThread({ post }: { post: Post }) {
 
   return (
     <div className="mt-5">
-      <h2 className="mb-3 font-display text-sm font-bold text-charcoal">
+      <h2 className="mb-3 font-display text-sm font-bold text-fg">
         Comments {comments?.length ? `(${comments.length})` : ''}
       </h2>
 
-      <div className="mb-4 rounded-2xl border border-hairline bg-white p-3.5">
+      <div className="mb-4 rounded-2xl border border-hairline bg-surface p-3.5">
         <CommentComposer post={post} placeholder="Say something... you're anonymous here." />
       </div>
 
@@ -48,7 +48,7 @@ export function CommentThread({ post }: { post: Post }) {
         </p>
       )}
 
-      <div className="flex flex-col divide-y divide-hairline rounded-2xl border border-hairline bg-white px-3.5">
+      <div className="flex flex-col divide-y divide-hairline rounded-2xl border border-hairline bg-surface px-3.5">
         {tree.map((node) => (
           <CommentItem key={node.id} comment={node} post={post} />
         ))}

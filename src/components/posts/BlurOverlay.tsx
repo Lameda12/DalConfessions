@@ -36,7 +36,7 @@ export function BlurOverlay({ children, variant }: BlurOverlayProps) {
         ) : (
           <TriangleAlert size={20} className="text-dal-gold" />
         )}
-        <span className="px-4 text-xs font-semibold leading-snug text-off-white">
+        <span className="px-4 text-xs font-semibold leading-snug text-ink-fg">
           {isSpoiler
             ? 'Spoiler / trigger warning — tap to reveal'
             : 'Reported by multiple people — tap to view anyway'}

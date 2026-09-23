@@ -27,16 +27,16 @@ export function Sheet({ title, onClose, children, maxWidth = 'max-w-md' }: Sheet
       onClick={onClose}
     >
       <div
-        className={`w-full ${maxWidth} animate-rise rounded-t-3xl bg-white p-6 shadow-2xl md:rounded-3xl`}
+        className={`w-full ${maxWidth} animate-rise rounded-t-3xl bg-surface p-6 shadow-2xl md:rounded-3xl`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="font-display text-lg font-extrabold text-charcoal">{title}</h2>
+          <h2 className="font-display text-lg font-extrabold text-fg">{title}</h2>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-slate transition-colors hover:bg-charcoal/5"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-slate transition-colors hover:bg-tint"
           >
             <X size={18} />
           </button>

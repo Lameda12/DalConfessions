@@ -15,7 +15,7 @@ export function SearchPage() {
 
   return (
     <div>
-      <h1 className="mb-4 font-display text-xl font-extrabold text-charcoal">Search</h1>
+      <h1 className="mb-4 font-display text-xl font-extrabold text-fg">Search</h1>
 
       <div className="relative mb-5">
         <SearchIcon size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-light" />
@@ -24,7 +24,7 @@ export function SearchPage() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search by keyword or tag — Killam, Coburg, Sexton…"
-          className="w-full rounded-full border border-hairline bg-white py-3 pl-11 pr-4 text-sm text-charcoal outline-none placeholder:text-slate-light focus:border-dal-gold"
+          className="w-full rounded-full border border-hairline bg-surface py-3 pl-11 pr-4 text-sm text-fg outline-none placeholder:text-slate-light focus:border-dal-gold"
         />
       </div>
 
@@ -35,7 +35,7 @@ export function SearchPage() {
       {isFetching && <p className="text-sm text-slate-light">Searching…</p>}
 
       {isError && (
-        <p className="rounded-2xl border border-hairline bg-white p-6 text-center text-sm text-slate">
+        <p className="rounded-2xl border border-hairline bg-surface p-6 text-center text-sm text-slate">
           Search is unavailable right now. Try again in a moment.
         </p>
       )}

@@ -34,7 +34,7 @@ export function ReportModal({ targetType, targetId, postId, onClose }: ReportMod
           <button
             type="button"
             onClick={onClose}
-            className="mt-2 rounded-full bg-charcoal px-6 py-2.5 text-sm font-bold text-off-white"
+            className="mt-2 rounded-full bg-charcoal px-6 py-2.5 text-sm font-bold text-ink-fg"
           >
             Done
           </button>
@@ -45,7 +45,7 @@ export function ReportModal({ targetType, targetId, postId, onClose }: ReportMod
 
   return (
     <Sheet title="Report this" onClose={onClose}>
-      <div className="mb-4 flex items-center gap-2 rounded-xl bg-charcoal/5 p-3 text-xs text-slate">
+      <div className="mb-4 flex items-center gap-2 rounded-xl bg-tint p-3 text-xs text-slate">
         <Flag size={14} className="shrink-0 text-dal-amber" />
         Reports are anonymous. Pick the reason that fits best.
       </div>
@@ -55,7 +55,7 @@ export function ReportModal({ targetType, targetId, postId, onClose }: ReportMod
             key={value}
             type="button"
             onClick={() => submit(value)}
-            className="rounded-xl border border-hairline px-4 py-3 text-left text-sm font-semibold text-charcoal transition-colors hover:border-dal-amber hover:bg-dal-gold/10"
+            className="rounded-xl border border-hairline px-4 py-3 text-left text-sm font-semibold text-fg transition-colors hover:border-dal-amber hover:bg-dal-gold/10"
           >
             {label}
           </button>
